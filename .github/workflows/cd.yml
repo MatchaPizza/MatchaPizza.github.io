@@ -1,0 +1,46 @@
+name: Continuous Deployment (CD)
+
+on:
+  workflow_run:
+    workflows: ["Continuous Integration (CI)"]
+    types: [completed]
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the repository
+        uses: actions/checkout@v2
+
+      - name: Set up NodeJS environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: yarn
+
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+          
+      - name: Install package dependencies
+        run: yarn install
+
+      - name: Deploy the app
+        run: npm run deploy
