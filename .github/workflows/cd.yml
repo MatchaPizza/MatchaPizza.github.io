@@ -36,8 +36,13 @@ jobs:
           
       - name: Install package dependencies
         run: yarn install
+        
+      - name: Check Github User
+        run: |
+          git config user.name 'MatchaPizza'
+          git config user.email 'ljoakhastor98281@gmail.com'
+        env:
+          deployment_token: ${{ secrets.DEPLOYMENT_KEY }}
 
       - name: Deploy the app
         run: npm run deploy
-        env:
-          deployment_token: ${{ secrets.DEPLOYMENT_KEY }}
