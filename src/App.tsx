@@ -1,7 +1,12 @@
-import React from 'react'
+import MainRoutes from './routes'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
-  return <h1>Matcha Pizza</h1>
+  return (
+    <BrowserRouter>
+      <MainRoutes />
+    </BrowserRouter>
+  )
 }
 
 export default App
