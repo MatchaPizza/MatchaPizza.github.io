@@ -11,12 +11,19 @@ import Tooltip from '@components/Tooltip'
 const CodingPage = () => {
   const tabletView = useTabletView()
   const windowWidth = useWindowWidth()
-  const [projectsDetail, setProjectsDetail] = useState<Array<ProjectDetail>>([])
+  const [projectDetailList, setProjectDetailList] = useState<
+    Array<ProjectDetail>
+  >([])
 
   useEffect(() => {
     projects.forEach(async (project) => {
-      const detail = await import(`@projects/${project.path}`)
-      setProjectsDetail([...projectsDetail, detail])
+      const projectDetail = await import(`@projects/${project.path}`)
+      setProjectDetailList((list) => {
+        const found =
+          list.findIndex((element) => element.title === projectDetail.title) !==
+          -1
+        return found ? list : [...list, projectDetail]
+      })
     })
   }, [projects])
 
@@ -116,7 +123,7 @@ const CodingPage = () => {
         </p>
       </Card>
       <div style={styles.project.container}>
-        {projectsDetail.map((projectDetail, projectIndex) => {
+        {projectDetailList.map((projectDetail, projectIndex) => {
           return (
             <Card
               key={`clickable-card-${projectIndex}`}
