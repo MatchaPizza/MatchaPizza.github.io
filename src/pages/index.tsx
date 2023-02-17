@@ -108,7 +108,6 @@ const MainPage = () => {
 
   const redirectMainPage = () => {
     window.location.href = 'https://joakqq.github.io'
-    // navigate('https://joakqq.github.io')
   }
 
   const navigateCustomKeyboardsPage = () => {
@@ -135,7 +134,7 @@ const MainPage = () => {
             <p>aka</p>
             <ClickableText onClick={openJoakPage}>Joak</ClickableText>
           </div>
-          <Button onClick={redirectMainPage}>Main Page 🌌</Button>
+          <Button onClick={redirectMainPage}>🌌 Main Page</Button>
         </div>
         <p style={styles.background.imageText}>Joak 🍵 Pizza 🍕 React 😂</p>
         <IconButton
