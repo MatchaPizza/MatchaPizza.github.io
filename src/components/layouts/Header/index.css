@@ -3,7 +3,7 @@
   top: 0;
   z-index: 10000;
   background-color: rgb(30 30 30);
-  height: 70px;
+  min-height: 70px;
   padding: 8px;
   display: flex;
   align-items: center;
@@ -13,4 +13,12 @@
 .matcha-icon {
   height: 40px;
   width: 40px;
+  cursor: pointer;
+}
+
+.github-icon {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  margin-right: 8px;
 }

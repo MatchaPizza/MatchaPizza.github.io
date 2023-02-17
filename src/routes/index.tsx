@@ -1,8 +1,10 @@
 import React from 'react'
-import MainPage from '@pages/main'
 import { Route, Routes } from 'react-router-dom'
 import MainLayout from '@components/layouts/MainLayout'
 import PageLoader from '@components/PageLoader'
+
+// pages
+import MainPage from '@pages/main'
 
 const MainRoutes = () => {
   return (

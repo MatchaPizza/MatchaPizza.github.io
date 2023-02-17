@@ -1,0 +1,8 @@
+.clickable-text {
+  color: rgb(232, 197, 255);
+  cursor: pointer;
+}
+
+.clickable-text:hover {
+  color: rgb(255, 255, 255);
+}
