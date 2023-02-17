@@ -29,7 +29,7 @@
 
 .page-loader-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-top: 32px;
+  justify-content: center;
+  flex: 1;
 }

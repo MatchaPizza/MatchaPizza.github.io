@@ -1,8 +1,13 @@
+import { MutableRefObject } from 'react'
 import './index.css'
 
-const Footer = () => {
+const Footer = ({
+  footerRef,
+}: {
+  footerRef: MutableRefObject<HTMLDivElement | null>
+}) => {
   return (
-    <div className="footer-container">
+    <div className="footer-container" ref={footerRef}>
       <div>This is the footer</div>
     </div>
   )
