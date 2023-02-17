@@ -1,4 +1,10 @@
 .footer-container {
-  min-height: 70px;
+  padding: 8px;
   background-color: rgb(30 30 30);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-text {
+  font-size: 16px;
 }

@@ -4,7 +4,7 @@ function getWindowWidth() {
   return window.innerWidth
 }
 
-const useDesktopView = () => {
+const useTabletView = () => {
   const [windowWidth, setWindowWidth] = useState(
     getWindowWidth(),
   )
@@ -18,7 +18,7 @@ const useDesktopView = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  return windowWidth > 768
+  return windowWidth <= 768
 }
 
-export default useDesktopView
+export default useTabletView
