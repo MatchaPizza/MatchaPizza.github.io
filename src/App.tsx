@@ -1,11 +1,11 @@
 import MainRoutes from './routes'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <MainRoutes />
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
