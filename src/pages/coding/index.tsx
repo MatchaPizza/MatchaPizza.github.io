@@ -30,16 +30,20 @@ const CodingPage = () => {
 
   useEffect(() => {
     projects.forEach(async (project) => {
-      const projectDetail: ProjectDetail = await import(
-        `@projects/${project.path}`
-      )
-      setProjectDetailList((list) =>
-        list.map((element) =>
-          element.id === projectDetail.id && !element.loaded
-            ? { ...projectDetail, loaded: true }
-            : element,
-        ),
-      )
+      try {
+        const projectDetail: ProjectDetail = await import(
+          `@projects/${project.path}`
+        )
+        setProjectDetailList((list) =>
+          list.map((element) =>
+            element.id === projectDetail.id && !element.loaded
+              ? { ...projectDetail, loaded: true }
+              : element,
+          ),
+        )
+      } catch (err) {
+        console.error(`failed to load from ${project.path}`)
+      }
     })
   }, [])
 
