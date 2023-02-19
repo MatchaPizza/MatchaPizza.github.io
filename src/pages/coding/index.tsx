@@ -9,6 +9,12 @@ import IconButton from '@components/IconButton'
 import Tooltip from '@components/Tooltip'
 import Skeleton from '@components/Skeleton'
 import LazyImage from '@components/LazyImage'
+import {
+  JoakIconLink,
+  MatchaPizzaIconLink,
+  openJoakPage,
+  openMatchaPizzaPage,
+} from '@utils/github'
 
 const CodingPage = () => {
   const tabletView = useTabletView()
@@ -36,14 +42,6 @@ const CodingPage = () => {
       )
     })
   }, [])
-
-  const openMatchaPizzaPage = () => {
-    window.open('https://github.com/matchapizza')
-  }
-
-  const openJoakPage = () => {
-    window.open('https://github.com/joakqq')
-  }
 
   const styles: Record<string, Record<string, CSSProperties>> = {
     main: {
@@ -127,7 +125,7 @@ const CodingPage = () => {
       <Card styles={styles.content.card}>
         <p style={styles.card.content}>
           I love coding. Since this is my hobby account, I have project related
-          games as well.
+          to games as well.
         </p>
       </Card>
       <div style={styles.project.container}>
@@ -212,7 +210,7 @@ const CodingPage = () => {
             height={200}
             width={200}
             styles={styles.avatar.icon}
-            src="https://avatars.githubusercontent.com/u/47177060"
+            src={JoakIconLink}
             alt="joak-icon"
           />
           <p style={styles.avatar.text}>Joak</p>
@@ -225,7 +223,7 @@ const CodingPage = () => {
             height={200}
             width={200}
             styles={styles.avatar.icon}
-            src="https://avatars.githubusercontent.com/u/124992812"
+            src={MatchaPizzaIconLink}
             alt="matchapizza-icon"
           />
           <p style={styles.avatar.text}>MatchaPizza</p>
