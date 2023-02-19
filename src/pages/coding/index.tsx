@@ -58,10 +58,9 @@ const CodingPage = () => {
       card: {
         padding: 16,
         marginTop: 8,
+        marginBottom: 8,
       },
-    },
-    card: {
-      content: {
+      text: {
         textAlign: 'center',
       },
     },
@@ -123,83 +122,79 @@ const CodingPage = () => {
     <div style={styles.main.container}>
       <h1 style={styles.main.titleText}>Coding</h1>
       <Card styles={styles.content.card}>
-        <p style={styles.card.content}>
+        <p style={styles.content.text}>
           I love coding. Since this is my hobby account, I have project related
           to games as well.
         </p>
       </Card>
       <div style={styles.project.container}>
-        {projectDetailList.map((projectDetail, projectIndex) => {
-          return (
-            <Card
-              key={`clickable-card-${projectIndex}`}
-              styles={styles.project.card}
-            >
-              {projectDetail.loaded ? (
-                <Fragment>
-                  <h2 style={styles.project.cardTitle}>
-                    {projectDetail.title}
-                  </h2>
-                  {projectDetail.imagePath && (
-                    <LazyImage
-                      styles={styles.project.cardImage}
-                      src={`/projects/images/${projectDetail.imagePath}`}
-                      alt={`${projectDetail.title}`}
-                      width="100%"
-                      height={300}
-                    />
-                  )}
-                  <p>{projectDetail.description}</p>
-                  <div style={styles.project.buttonContainer}>
-                    {projectDetail.website && (
-                      <Tooltip message="Link">
-                        <IconButton
-                          styles={styles.project.iconButton}
-                          icon="/images/icons/link.png"
-                          onClick={() => window.open(projectDetail.website)}
-                        />
-                      </Tooltip>
-                    )}
-                    {projectDetail.github && (
-                      <Tooltip message="Github repository">
-                        <IconButton
-                          styles={styles.project.iconButton}
-                          icon="/images/icons/github-mark.png"
-                          onClick={() => window.open(projectDetail.github)}
-                        />
-                      </Tooltip>
-                    )}
-                  </div>
-                </Fragment>
-              ) : (
-                <Fragment>
-                  <Skeleton width="100%" height={28} />
-                  <Skeleton
+        {projectDetailList.map((projectDetail, projectIndex) => (
+          <Card
+            key={`project-card-${projectIndex}`}
+            styles={styles.project.card}
+          >
+            {projectDetail.loaded ? (
+              <Fragment>
+                <h2 style={styles.project.cardTitle}>{projectDetail.title}</h2>
+                {projectDetail.imagePath && (
+                  <LazyImage
+                    styles={styles.project.cardImage}
+                    src={`/projects/images/${projectDetail.imagePath}`}
+                    alt={`${projectDetail.title}`}
                     width="100%"
                     height={300}
-                    styles={{ margin: '8px 0px' }}
                   />
-                  <Skeleton width="100%" height={19} />
-                  <div style={styles.project.buttonContainer}>
-                    <Skeleton
-                      width={32}
-                      height={32}
-                      styles={{ borderRadius: '100%' }}
-                    />
-                    <Skeleton
-                      width={32}
-                      height={32}
-                      styles={{ borderRadius: '100%' }}
-                    />
-                  </div>
-                </Fragment>
-              )}
-            </Card>
-          )
-        })}
+                )}
+                <p>{projectDetail.description}</p>
+                <div style={styles.project.buttonContainer}>
+                  {projectDetail.website && (
+                    <Tooltip message="Link">
+                      <IconButton
+                        styles={styles.project.iconButton}
+                        icon="/images/icons/link.png"
+                        onClick={() => window.open(projectDetail.website)}
+                      />
+                    </Tooltip>
+                  )}
+                  {projectDetail.github && (
+                    <Tooltip message="Github Repository">
+                      <IconButton
+                        styles={styles.project.iconButton}
+                        icon="/images/icons/github-mark.png"
+                        onClick={() => window.open(projectDetail.github)}
+                      />
+                    </Tooltip>
+                  )}
+                </div>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <Skeleton width="100%" height={28} />
+                <Skeleton
+                  width="100%"
+                  height={300}
+                  styles={{ margin: '8px 0px' }}
+                />
+                <Skeleton width="100%" height={19} />
+                <div style={styles.project.buttonContainer}>
+                  <Skeleton
+                    width={32}
+                    height={32}
+                    styles={{ borderRadius: '100%' }}
+                  />
+                  <Skeleton
+                    width={32}
+                    height={32}
+                    styles={{ borderRadius: '100%' }}
+                  />
+                </div>
+              </Fragment>
+            )}
+          </Card>
+        ))}
       </div>
       <Card styles={styles.content.card}>
-        <p style={styles.card.content}>
+        <p style={styles.content.text}>
           I also love AI and NLP. you can check out my git repositories to learn
           more!
         </p>
