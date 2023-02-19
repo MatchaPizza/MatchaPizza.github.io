@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmatchapizza=self.webpackChunkmatchapizza||[]).push([[27],{9027:function(e){e.exports=JSON.parse('{"id":2,"title":"Modded Minecraft","description":"I played modded minecraft a lot when I was young","website":"https://www.curseforge.com/minecraft/modpacks"}')}}]);

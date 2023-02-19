@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmatchapizza=self.webpackChunkmatchapizza||[]).push([[500],{6500:function(s){s.exports=JSON.parse('{"id":1,"title":"OSU!","description":"I love playing rhythm games","personalSite":"https://osu.ppy.sh/users/2749481","website":"https://osu.ppy.sh/home"}')}}]);

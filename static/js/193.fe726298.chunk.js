@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkmatchapizza=self.webpackChunkmatchapizza||[]).push([[193],{193:function(a,t,e){e.r(t);var n=e(184);t.default=function(){return(0,n.jsx)(n.Fragment,{})}}}]);
-//# sourceMappingURL=193.fe726298.chunk.js.map
