@@ -1,4 +1,5 @@
 import Tooltip from '@components/Tooltip'
+import { openProjectGithubPage } from '@utils/github'
 import { useNavigate } from 'react-router-dom'
 import './index.css'
 
@@ -7,10 +8,6 @@ const Header = () => {
 
   const redirectHome = () => {
     navigate('/')
-  }
-
-  const openProjectGithubPage = () => {
-    window.open('https://github.com/MatchaPizza/MatchaPizza.github.io')
   }
 
   return (
@@ -23,7 +20,7 @@ const Header = () => {
           onClick={redirectHome}
         />
       </Tooltip>
-      <h3>Joak's Hobby Github Page</h3>
+      <h3>Joak's Hobby Page</h3>
       <div style={{ flex: 1 }} />
       <Tooltip message="github page repository" position="left">
         <img

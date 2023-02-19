@@ -7,6 +7,11 @@ import useWindowWidth from '@hooks/useWindowWidth'
 import { useNavigate } from 'react-router-dom'
 import Button from '@components/Button'
 import LazyImage from '@components/LazyImage'
+import {
+  openJoakPage,
+  openMatchaPizzaPage,
+  redirectMainPage,
+} from '@utils/github'
 
 const MainPage = () => {
   const mainRef = useRef<HTMLDivElement>(null)
@@ -94,18 +99,6 @@ const MainPage = () => {
 
   const jumpToMainStart = () => {
     mainRef.current?.scrollIntoView()
-  }
-
-  const openMatchaPizzaPage = () => {
-    window.open('https://github.com/matchapizza')
-  }
-
-  const openJoakPage = () => {
-    window.open('https://github.com/joakqq')
-  }
-
-  const redirectMainPage = () => {
-    window.location.href = 'https://joakqq.github.io'
   }
 
   const navigateCustomKeyboardsPage = () => {
