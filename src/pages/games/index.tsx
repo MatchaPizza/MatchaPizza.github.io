@@ -20,14 +20,18 @@ const GamesPage = () => {
 
   useEffect(() => {
     games.forEach(async (game) => {
-      const gameDetail: GameDetail = await import(`@games/${game.path}`)
-      setGameDetailList((list) =>
-        list.map((element) =>
-          element.id === gameDetail.id && !element.loaded
-            ? { ...gameDetail, loaded: true }
-            : element,
-        ),
-      )
+      try {
+        const gameDetail: GameDetail = await import(`@games/${game.path}`)
+        setGameDetailList((list) =>
+          list.map((element) =>
+            element.id === gameDetail.id && !element.loaded
+              ? { ...gameDetail, loaded: true }
+              : element,
+          ),
+        )
+      } catch (err) {
+        console.error(`failed to load from ${game.path}`)
+      }
     })
   }, [])
 
