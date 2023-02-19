@@ -7,7 +7,7 @@
       "@styles/*": ["src/styles/*"],
       "@hooks/*": ["src/hooks/*"],
       "@projects/*": ["public/projects/*"],
-      "@interfaces/*": ["public/interfaces/*"]
+      "@interfaces/*": ["src/interfaces/*"]
     }
   }
 }

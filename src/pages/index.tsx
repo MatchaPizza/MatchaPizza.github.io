@@ -6,6 +6,7 @@ import ClickableCard from '@components/ClickableCard'
 import useWindowWidth from '@hooks/useWindowWidth'
 import { useNavigate } from 'react-router-dom'
 import Button from '@components/Button'
+import LazyImage from '@components/LazyImage'
 
 const MainPage = () => {
   const mainRef = useRef<HTMLDivElement>(null)
@@ -83,10 +84,7 @@ const MainPage = () => {
         marginBottom: 8,
       },
       image: {
-        width: '100%',
-        height: 300,
         objectFit: 'cover',
-        backgroundColor: 'gray',
       },
       content: {
         marginTop: 8,
@@ -151,11 +149,12 @@ const MainPage = () => {
             onClick={navigateCustomKeyboardsPage}
           >
             <p style={styles.card.titleText}>Custom Keyboards</p>
-            <img
-              style={styles.card.image}
+            <LazyImage
+              width="100%"
+              height={300}
+              styles={styles.card.image}
               src="/images/custom-keyboards.webp"
               alt="custom-keyboards"
-              loading="lazy"
             />
             <p style={styles.card.content}>
               I love building custom keyboards, and type on them
@@ -166,11 +165,12 @@ const MainPage = () => {
             onClick={navigateCodingPage}
           >
             <p style={styles.card.titleText}>Coding</p>
-            <img
-              style={styles.card.image}
+            <LazyImage
+              width="100%"
+              height={300}
+              styles={styles.card.image}
               src="/images/coding.jpg"
               alt="coding"
-              loading="lazy"
             />
             <p style={styles.card.content}>
               I like coding, especially in AI and NLP
@@ -181,11 +181,12 @@ const MainPage = () => {
             onClick={navigateGamesPage}
           >
             <p style={styles.card.titleText}>Games</p>
-            <img
-              style={styles.card.image}
+            <LazyImage
+              width="100%"
+              height={300}
+              styles={styles.card.image}
               src="/images/games.jpg"
               alt="games"
-              loading="lazy"
             />
             <p style={styles.card.content}>
               Althrough I don't play a lot games, I do watch people play games
