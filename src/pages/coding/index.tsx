@@ -2,30 +2,40 @@ import Card from '@components/Card'
 import ClickableCard from '@components/ClickableCard'
 import useTabletView from '@hooks/useTabletView'
 import useWindowWidth from '@hooks/useWindowWidth'
-import { CSSProperties, useEffect, useState } from 'react'
-import ProjectDetail from 'src/interfaces/project_detail'
+import { CSSProperties, Fragment, useEffect, useState } from 'react'
+import ProjectDetail, { InitProjectDetail } from '@interfaces/project_detail'
 import projects from '@projects/index.json'
 import IconButton from '@components/IconButton'
 import Tooltip from '@components/Tooltip'
+import Skeleton from '@components/Skeleton'
+import LazyImage from '@components/LazyImage'
 
 const CodingPage = () => {
   const tabletView = useTabletView()
   const windowWidth = useWindowWidth()
   const [projectDetailList, setProjectDetailList] = useState<
     Array<ProjectDetail>
-  >([])
+  >(
+    projects.map((project) => ({
+      ...InitProjectDetail,
+      id: project.id,
+    })),
+  )
 
   useEffect(() => {
     projects.forEach(async (project) => {
-      const projectDetail = await import(`@projects/${project.path}`)
-      setProjectDetailList((list) => {
-        const found =
-          list.findIndex((element) => element.title === projectDetail.title) !==
-          -1
-        return found ? list : [...list, projectDetail]
-      })
+      const projectDetail: ProjectDetail = await import(
+        `@projects/${project.path}`
+      )
+      setProjectDetailList((list) =>
+        list.map((element) =>
+          element.id === projectDetail.id && !element.loaded
+            ? { ...projectDetail, loaded: true }
+            : element,
+        ),
+      )
     })
-  }, [projects])
+  }, [])
 
   const openMatchaPizzaPage = () => {
     window.open('https://github.com/matchapizza')
@@ -71,10 +81,7 @@ const CodingPage = () => {
         alignItems: 'center',
       },
       icon: {
-        height: 200,
-        width: 200,
         borderRadius: '100%',
-        backgroundColor: 'gray',
       },
       text: {
         marginTop: 8,
@@ -97,14 +104,15 @@ const CodingPage = () => {
         fontWeight: 'bold',
       },
       cardImage: {
-        width: '100%',
-        height: 300,
+        marginTop: 8,
+        marginBottom: 8,
         objectFit: 'cover',
-        backgroundColor: 'gray',
       },
       buttonContainer: {
+        marginTop: 8,
         display: 'flex',
         justifyContent: 'flex-end',
+        gap: 8,
       },
       iconButton: {
         height: 32,
@@ -129,36 +137,65 @@ const CodingPage = () => {
               key={`clickable-card-${projectIndex}`}
               styles={styles.project.card}
             >
-              <h2 style={styles.project.cardTitle}>{projectDetail.title}</h2>
-              {projectDetail.imagePath && (
-                <img
-                  style={styles.project.cardImage}
-                  src={`/projects/images/${projectDetail.imagePath}`}
-                  alt={`${projectDetail.title}`}
-                  loading="lazy"
-                />
+              {projectDetail.loaded ? (
+                <Fragment>
+                  <h2 style={styles.project.cardTitle}>
+                    {projectDetail.title}
+                  </h2>
+                  {projectDetail.imagePath && (
+                    <LazyImage
+                      styles={styles.project.cardImage}
+                      src={`/projects/images/${projectDetail.imagePath}`}
+                      alt={`${projectDetail.title}`}
+                      width="100%"
+                      height={300}
+                    />
+                  )}
+                  <p>{projectDetail.description}</p>
+                  <div style={styles.project.buttonContainer}>
+                    {projectDetail.website && (
+                      <Tooltip message="Link">
+                        <IconButton
+                          styles={styles.project.iconButton}
+                          icon="/images/icons/link.png"
+                          onClick={() => window.open(projectDetail.website)}
+                        />
+                      </Tooltip>
+                    )}
+                    {projectDetail.github && (
+                      <Tooltip message="Github repository">
+                        <IconButton
+                          styles={styles.project.iconButton}
+                          icon="/images/icons/github-mark.png"
+                          onClick={() => window.open(projectDetail.github)}
+                        />
+                      </Tooltip>
+                    )}
+                  </div>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <Skeleton width="100%" height={28} />
+                  <Skeleton
+                    width="100%"
+                    height={300}
+                    styles={{ margin: '8px 0px' }}
+                  />
+                  <Skeleton width="100%" height={19} />
+                  <div style={styles.project.buttonContainer}>
+                    <Skeleton
+                      width={32}
+                      height={32}
+                      styles={{ borderRadius: '100%' }}
+                    />
+                    <Skeleton
+                      width={32}
+                      height={32}
+                      styles={{ borderRadius: '100%' }}
+                    />
+                  </div>
+                </Fragment>
               )}
-              <p>{projectDetail.description}</p>
-              <div style={styles.project.buttonContainer}>
-                {projectDetail.website && (
-                  <Tooltip message="Link">
-                    <IconButton
-                      styles={styles.project.iconButton}
-                      icon="/images/icons/link.png"
-                      onClick={() => window.open(projectDetail.website)}
-                    />
-                  </Tooltip>
-                )}
-                {projectDetail.github && (
-                  <Tooltip message="Github repository">
-                    <IconButton
-                      styles={styles.project.iconButton}
-                      icon="/images/icons/github-mark.png"
-                      onClick={() => window.open(projectDetail.github)}
-                    />
-                  </Tooltip>
-                )}
-              </div>
             </Card>
           )
         })}
@@ -171,11 +208,12 @@ const CodingPage = () => {
       </Card>
       <div style={styles.avatar.container}>
         <ClickableCard styles={styles.avatar.card} onClick={openJoakPage}>
-          <img
-            style={styles.avatar.icon}
+          <LazyImage
+            height={200}
+            width={200}
+            styles={styles.avatar.icon}
             src="https://avatars.githubusercontent.com/u/47177060"
             alt="joak-icon"
-            loading="lazy"
           />
           <p style={styles.avatar.text}>Joak</p>
         </ClickableCard>
@@ -183,11 +221,12 @@ const CodingPage = () => {
           styles={styles.avatar.card}
           onClick={openMatchaPizzaPage}
         >
-          <img
-            style={styles.avatar.icon}
+          <LazyImage
+            height={200}
+            width={200}
+            styles={styles.avatar.icon}
             src="https://avatars.githubusercontent.com/u/124992812"
             alt="matchapizza-icon"
-            loading="lazy"
           />
           <p style={styles.avatar.text}>MatchaPizza</p>
         </ClickableCard>

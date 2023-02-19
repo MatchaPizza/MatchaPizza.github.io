@@ -20,7 +20,6 @@ const Header = () => {
           src="images/icons/matcha.png"
           alt="matcha-icon"
           className="matcha-icon"
-          loading="lazy"
           onClick={redirectHome}
         />
       </Tooltip>
@@ -31,7 +30,6 @@ const Header = () => {
           src="images/icons/github-mark-white.png"
           alt="github-icon"
           className="github-icon"
-          loading="lazy"
           onClick={openProjectGithubPage}
         />
       </Tooltip>
