@@ -1,5 +1,4 @@
 import Card from '@components/Card'
-import useTabletView from '@hooks/useTabletView'
 import useWindowWidth from '@hooks/useWindowWidth'
 import { CSSProperties, Fragment, useEffect, useState } from 'react'
 import games from '@games/index.json'
@@ -9,8 +8,8 @@ import IconButton from '@components/IconButton'
 import Skeleton from '@components/Skeleton'
 
 const GamesPage = () => {
-  const tabletView = useTabletView()
   const windowWidth = useWindowWidth()
+  const tabletView = windowWidth <= 768
   const [gameDetailList, setGameDetailList] = useState<Array<GameDetail>>(
     games.map((game) => ({
       ...InitGameDetail,

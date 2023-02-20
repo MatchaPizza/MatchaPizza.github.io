@@ -2,6 +2,25 @@ html {
   scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar {
+  width: 16px;
+}
+
+html::-webkit-scrollbar-track {
+  width: 16px;
+  background: rgb(165, 165, 165);
+}
+
+html::-webkit-scrollbar-thumb {
+  width: 16px;
+  background: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: rgb(25, 25, 25);
+}
+
 body {
   margin: 0px;
   font-family: -apple-system, BlinkMacSystemFont, Consolas;

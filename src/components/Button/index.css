@@ -10,3 +10,13 @@
 .button:hover {
   opacity: 100%;
 }
+
+.disabled {
+  opacity: 10% !important;
+  color: rgb(196, 196, 196) !important;
+}
+
+.disabled:hover {
+  opacity: 10% !important;
+  cursor: default !important;
+}
