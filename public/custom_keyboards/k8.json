@@ -1,0 +1,17 @@
+{
+  "id": 1,
+  "title": "Keychron K8",
+  "description": "This is my first \"custom keyboard\" as it came pre-built. As the bottom case sounded pretty hollow, I filled it with some leftover foams from the box to dampen the sound a little bit. With the slient tactile switches and compatibility with mac, windows, linux systems, the board is pretty good for office use.",
+  "pcb": ["Wireless Hotswap"],
+  "plates": ["Aluminium"],
+  "caseColors": ["Dull Blue", "Black"],
+  "caseMaterials": ["Aluminium", "Plastic"],
+  "keycap": ["[Clone] GMK Miami Nights"],
+  "switches": ["Gazzew Boba U4", "ZealPC Healios"],
+  "stabilizer": "Plate Mounted Stabilizer",
+  "foams": ["Mid-Plate"],
+  "mounting": ["Tray Mounted"],
+  "images": ["k8/1.jpg", "k8/2.jpg", "k8/3.jpg", "k8/4.jpg"],
+  "website": "https://www.keychron.com/products/keychron-k8-tenkeyless-wireless-mechanical-keyboard",
+  "arrived": true
+}

@@ -1,6 +1,5 @@
 import Card from '@components/Card'
 import ClickableCard from '@components/ClickableCard'
-import useTabletView from '@hooks/useTabletView'
 import useWindowWidth from '@hooks/useWindowWidth'
 import { CSSProperties, Fragment, useEffect, useState } from 'react'
 import ProjectDetail, { InitProjectDetail } from '@interfaces/project_detail'
@@ -17,8 +16,8 @@ import {
 } from '@utils/github'
 
 const CodingPage = () => {
-  const tabletView = useTabletView()
   const windowWidth = useWindowWidth()
+  const tabletView = windowWidth <= 768
   const [projectDetailList, setProjectDetailList] = useState<
     Array<ProjectDetail>
   >(

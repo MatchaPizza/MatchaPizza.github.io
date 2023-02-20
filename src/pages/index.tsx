@@ -1,7 +1,6 @@
 import ClickableText from '@components/ClickableText'
 import IconButton from '@components/IconButton'
 import { CSSProperties, Fragment, useRef } from 'react'
-import useTabletView from '@hooks/useTabletView'
 import ClickableCard from '@components/ClickableCard'
 import useWindowWidth from '@hooks/useWindowWidth'
 import { useNavigate } from 'react-router-dom'
@@ -15,8 +14,8 @@ import {
 
 const MainPage = () => {
   const mainRef = useRef<HTMLDivElement>(null)
-  const tabletView = useTabletView()
   const windowWidth = useWindowWidth()
+  const tabletView = windowWidth <= 768
   const navigate = useNavigate()
 
   const styles: Record<string, Record<string, CSSProperties>> = {

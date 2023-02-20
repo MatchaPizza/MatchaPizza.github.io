@@ -1,0 +1,64 @@
+.image-swiper {
+  display: flex;
+  position: relative;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.slide-container {
+  display: flex;
+  overflow: auto;
+  position: relative;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scroll-padding-right: 0;
+}
+
+.slide-container::-webkit-scrollbar {
+  height: 16px;
+}
+
+.slide-container::-webkit-scrollbar-track {
+  height: 16px;
+  border-radius: 10px;
+}
+
+.slide-container::-webkit-scrollbar-thumb {
+  height: 16px;
+  background: rgb(96, 96, 96);
+  border-radius: 10px;
+}
+
+.slide-container::-webkit-scrollbar-thumb:hover {
+  background: rgb(160, 160, 160);
+}
+
+.left-button-container {
+  position: absolute;
+  left: 8px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.right-button-container {
+  position: absolute;
+  right: 8px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nagivate-buttons-container {
+  position: absolute;
+  bottom: 32px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
