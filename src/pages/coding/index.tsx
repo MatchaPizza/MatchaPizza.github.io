@@ -60,8 +60,7 @@ const CodingPage = () => {
     content: {
       card: {
         padding: 16,
-        marginTop: 8,
-        marginBottom: 8,
+        margin: '8px 0px',
       },
       text: {
         textAlign: 'center',
@@ -104,8 +103,7 @@ const CodingPage = () => {
         fontWeight: 'bold',
       },
       cardImage: {
-        marginTop: 8,
-        marginBottom: 8,
+        margin: '8px 0px',
         objectFit: 'cover',
       },
       buttonContainer: {

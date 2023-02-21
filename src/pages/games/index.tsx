@@ -47,8 +47,7 @@ const GamesPage = () => {
     content: {
       card: {
         padding: 16,
-        marginTop: 8,
-        marginBottom: 8,
+        margin: '8px 0px',
       },
       text: {
         textAlign: 'center',
