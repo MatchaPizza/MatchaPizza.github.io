@@ -29,40 +29,28 @@ const ImageSwiper = ({
 
   useEffect(() => {
     const listeningFunc = (e: any) => {
-      const roundedIndex = Math.round(e.target.scrollLeft / e.target.offsetWidth)
-      if (roundedIndex !== imageIndex) {
-        setImageIndex(roundedIndex)
-      }
+      setImageIndex(Math.round(e.target.scrollLeft / e.target.offsetWidth))
     }
 
     const refCurrent = containerRef.current
     if (containerRef && refCurrent) {
       refCurrent.addEventListener('scroll', listeningFunc)
-      return () =>
-        refCurrent.removeEventListener('scroll', listeningFunc)
+      return () => refCurrent.removeEventListener('scroll', listeningFunc)
     }
-  }, [imageIndex])
+  }, [])
+
+  const scrollToIndex = (index: number) => {
+    if (containerRef && containerRef.current) {
+      containerRef.current.scrollLeft = containerRef.current.clientWidth * index
+    }
+  }
 
   const handlePrevImageClick = () => {
-    setImageIndex((prev) => {
-      if (prev - 1 > -1) {
-        slideRefs[prev - 1].current?.scrollIntoView()
-        return prev - 1
-      } else {
-        return prev
-      }
-    })
+    if (imageIndex - 1 > -1) scrollToIndex(imageIndex - 1)
   }
 
   const handleNextImageClick = () => {
-    setImageIndex((prev) => {
-      if (prev + 1 < slideRefs.length) {
-        slideRefs[prev + 1].current?.scrollIntoView()
-        return prev + 1
-      } else {
-        return prev
-      }
-    })
+    if (imageIndex + 1 < slideRefs.length) scrollToIndex(imageIndex + 1)
   }
 
   return (
@@ -96,10 +84,12 @@ const ImageSwiper = ({
           <IconButton
             key={`navgivate-button-${index}`}
             onClick={() =>
-              setImageIndex(() => {
-                slideRefs[index].current?.scrollIntoView()
-                return index
-              })
+              // setImageIndex(() => {
+              //   // slideRefs[index].current?.scrollIntoView()
+              //   scrollToIndex(index)
+              //   return index
+              // })
+              scrollToIndex(index)
             }
             styles={{
               width: 20,

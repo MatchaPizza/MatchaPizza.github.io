@@ -11,7 +11,7 @@ const Header = () => {
   }
 
   return (
-    <div className="header-container">
+    <header className="header-container">
       <Tooltip message="home" position="bottom">
         <img
           src="images/icons/matcha.png"
@@ -30,7 +30,7 @@ const Header = () => {
           onClick={openProjectGithubPage}
         />
       </Tooltip>
-    </div>
+    </header>
   )
 }
 

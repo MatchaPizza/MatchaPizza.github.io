@@ -12,7 +12,6 @@ const Button = ({
   disabled?: boolean
   styles?: CSSProperties
 }) => {
-  console.log('disabled?', disabled)
   return (
     <div
       className={`button${disabled ? ' disabled' : ''}`}

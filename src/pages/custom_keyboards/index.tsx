@@ -73,7 +73,7 @@ const CustomKeyboardsPage = () => {
     },
     customKeyboard: {
       card: {
-        margin: '8px 0px',
+        margin: 8,
         padding: 16,
       },
       cardTitle: {
