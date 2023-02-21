@@ -2,7 +2,7 @@
   "id": 0,
   "title": "",
   "description": "",
-  "pcb": [""],
+  "pcbs": [""],
   "plates": [""],
   "caseColors": [""],
   "caseMaterials": [""],
@@ -13,5 +13,5 @@
   "mountings": [""],
   "images": [""],
   "website": "",
-  "arrived": true
+  "fulfilled": true
 }

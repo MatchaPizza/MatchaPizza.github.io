@@ -13,14 +13,14 @@ interface CustomKeyboardDetail {
   mountings?: Array<string>
   images?: Array<string>
   website?: string
-  arrived: boolean
+  fulfilled: boolean
   loaded: boolean
 }
 
 export const InitCustomKeyboardDetail: CustomKeyboardDetail = {
   id: 0,
   loaded: false,
-  arrived: false,
+  fulfilled: false,
 }
 
 export default CustomKeyboardDetail
