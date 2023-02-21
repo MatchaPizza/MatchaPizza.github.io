@@ -145,6 +145,7 @@ const CustomKeyboardsPage = () => {
                             <ImageSlide
                               src={`custom_keyboards/images/${image}`}
                               alt={`image-${customKeyboardDetail.id}-${imageIndex}`}
+                              key={`image-${customKeyboardDetail.id}-${imageIndex}`}
                             />
                           ),
                         )}

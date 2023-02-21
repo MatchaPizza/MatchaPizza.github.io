@@ -25,25 +25,34 @@ const ImageSwiper = ({
     children.map(() => createRef<HTMLImageElement>()),
   )
   const [imageIndex, setImageIndex] = useState<number>(0)
+  const [scrollX, setScrollX] = useState<number>(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const listeningFunc = (e: any) => {
       const snappingOffset = e.target.scrollLeft % e.target.offsetWidth
 
-      // scroll-snapped offset at [-1, 1]
-      if (snappingOffset >= -1 && snappingOffset >= 1) {
+      // scroll-snapped offset at [-1, 1],
+      // and check if scroll position is matched (preserve initial scrollLeft = 0)
+      if (
+        snappingOffset >= -1 &&
+        snappingOffset >= 1 &&
+        scrollX === e.target.scrollLeft
+      ) {
         setImageIndex(Math.round(e.target.scrollLeft / e.target.offsetWidth))
+        setScrollX(e.target.scrollLeft)
       }
     }
 
-    const refCurrnet = containerRef.current
-    if (containerRef && refCurrnet) {
-      refCurrnet.addEventListener('scroll', listeningFunc, false)
+    const refCurrent = containerRef.current
+    if (containerRef && refCurrent) {
+      refCurrent.scrollLeft = 0
+      console.log('container ref', refCurrent.scrollLeft)
+      refCurrent.addEventListener('scroll', listeningFunc, false)
       return () =>
-        refCurrnet.removeEventListener('scroll', listeningFunc, false)
+        refCurrent.removeEventListener('scroll', listeningFunc, false)
     }
-  }, [])
+  }, [scrollX])
 
   const handlePrevImageClick = () => {
     setImageIndex((prev) => {
