@@ -2,6 +2,7 @@ interface CustomKeyboardDetail {
   id: number
   title?: string
   description?: string
+  layout?: string
   pcbs?: Array<string>
   plates?: Array<string>
   caseColors?: Array<string>
@@ -9,7 +10,7 @@ interface CustomKeyboardDetail {
   keycaps?: Array<string>
   switches?: Array<string>
   stabilizers?: Array<string>
-  foams?: Array<string>
+  dampenings?: Array<string>
   mountings?: Array<string>
   images?: Array<string>
   website?: string

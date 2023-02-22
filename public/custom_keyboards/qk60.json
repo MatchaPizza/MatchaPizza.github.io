@@ -1,3 +1,17 @@
 {
-  "id": 4
+  "id": 5,
+  "title": "QwertyKeys QK60",
+  "description": "It is QwertyKeys' second drop and they keep delievering high quailty keyboard. I chose the HHKB layout and I immediately love the build and its sound. It is my favourite keyboard in my collection for now!",
+  "layout": "HHKB",
+  "pcbs": ["RGB Tri-mode Wireless Hotswap"],
+  "plates": ["Aluminium"],
+  "caseColors": ["Lavender", "Gold"],
+  "caseMaterials": ["PC", "Aluminium"],
+  "keycaps": ["Osume Sakura with Novelties"],
+  "switches": ["Tecsee Strawberry Ice"],
+  "stabilizers": ["Owlab Owlstab Screw-in"],
+  "dampenings": ["Case Foam", "Mid-plate Foam", "PE Foam"],
+  "mountings": ["Gasket Mounted"],
+  "images": ["qk60/1.jpg", "qk60/2.jpg", "qk60/3.jpg"],
+  "fulfilled": true
 }
