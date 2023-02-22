@@ -1,5 +1,5 @@
 import { CSSProperties, Fragment, useEffect, useState } from 'react'
-import customKeyboards from '@custom_keyboards/_index.json' // TODO replace with index.json later
+import customKeyboards from '@custom_keyboards/index.json'
 import useWindowWidth from '@hooks/useWindowWidth'
 import CustomKeyboardDetail, {
   InitCustomKeyboardDetail,
@@ -23,7 +23,7 @@ const CustomKeyboardsPage = () => {
         ...InitCustomKeyboardDetail,
         id: customKeyboard.id,
       }))
-      .sort((prev, cur) => (prev > cur ? -1 : 1)),
+      .sort((prev, cur) => (prev.id > cur.id ? -1 : 1)),
   )
 
   useEffect(() => {
@@ -44,6 +44,22 @@ const CustomKeyboardsPage = () => {
       }
     })
   }, [])
+
+  // TODO add observer for lazy loading cards
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver((entries) => {
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         console.log('isintersecting', entry.target)
+  //       }
+  //     })
+  //   })
+
+  //   const cards = document.getElementsByClassName('card')
+  //   for (let i = 0; i < cards.length; i++) {
+  //     observer.observe(cards[i])
+  //   }
+  // }, [])
 
   let chipIndex = 0
 
@@ -75,6 +91,7 @@ const CustomKeyboardsPage = () => {
       card: {
         margin: 8,
         padding: 16,
+        height: 'fit-content',
       },
       cardTitle: {
         fontSize: 24,
@@ -156,11 +173,19 @@ const CustomKeyboardsPage = () => {
                   </h2>
                   {!customKeyboardDetail.fulfilled && (
                     <p style={styles.customKeyboard.notFulfilled}>
-                      Custom keyboard in shipment state or group buy status is
-                      not fulfilled yet ...
+                      Keyboard in shipment state or group buy status is not
+                      fulfilled yet ...
                     </p>
                   )}
                   <div style={styles.customKeyboard.chipGroupContainer}>
+                    {customKeyboardDetail.layout && (
+                      <div style={styles.customKeyboard.chipContainer}>
+                        <p style={styles.customKeyboard.chipTitle}>Layout</p>
+                        <Chip index={chipIndex++}>
+                          {customKeyboardDetail.layout}
+                        </Chip>
+                      </div>
+                    )}
                     {customKeyboardDetail.pcbs &&
                       customKeyboardDetail.pcbs.length && (
                         <div style={styles.customKeyboard.chipContainer}>
@@ -274,15 +299,22 @@ const CustomKeyboardsPage = () => {
                           )}
                         </div>
                       )}
-                    {customKeyboardDetail.foams &&
-                      customKeyboardDetail.foams.length && (
+                    {customKeyboardDetail.dampenings &&
+                      customKeyboardDetail.dampenings.length && (
                         <div style={styles.customKeyboard.chipContainer}>
-                          <p style={styles.customKeyboard.chipTitle}>Foam</p>
-                          {customKeyboardDetail.foams.map((foam, foamIndex) => (
-                            <Chip index={chipIndex++} key={`foam-${foamIndex}`}>
-                              {foam}
-                            </Chip>
-                          ))}
+                          <p style={styles.customKeyboard.chipTitle}>
+                            Dampening
+                          </p>
+                          {customKeyboardDetail.dampenings.map(
+                            (dampening, dampeningIndex) => (
+                              <Chip
+                                index={chipIndex++}
+                                key={`dampening-${dampeningIndex}`}
+                              >
+                                {dampening}
+                              </Chip>
+                            ),
+                          )}
                         </div>
                       )}
                     {customKeyboardDetail.mountings &&

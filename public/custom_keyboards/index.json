@@ -5,15 +5,15 @@
   },
   {
     "id": 6,
-    "path": "jris65.json"
-  },
-  {
-    "id": 5,
     "path": "zoom_tkl.json"
   },
   {
-    "id": 4,
+    "id": 5,
     "path": "qk60.json"
+  },
+  {
+    "id": 4,
+    "path": "jris65.json"
   },
   {
     "id": 3,
