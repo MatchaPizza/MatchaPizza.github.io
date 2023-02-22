@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmatchapizza=self.webpackChunkmatchapizza||[]).push([[598],{9598:function(a){a.exports=JSON.parse('[{"id":7,"path":"fukuro.json"},{"id":6,"path":"jris65.json"},{"id":5,"path":"zoom_tkl.json"},{"id":4,"path":"qk60.json"},{"id":3,"path":"qk65.json"},{"id":2,"path":"q3.json"},{"id":1,"path":"k8.json"}]')}}]);

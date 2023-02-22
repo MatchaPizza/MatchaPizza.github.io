@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmatchapizza=self.webpackChunkmatchapizza||[]).push([[634],{9634:function(s){s.exports=JSON.parse('{"id":0,"title":"","description":"","layout":"","pcbs":[""],"plates":[""],"caseColors":[""],"caseMaterials":[""],"keycaps":[""],"switches":[""],"stabilizers":[""],"dampenings":[""],"mountings":[""],"images":[""],"website":"","fulfilled":true}')}}]);
