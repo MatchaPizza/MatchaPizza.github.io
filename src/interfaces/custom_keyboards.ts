@@ -2,8 +2,8 @@ interface CustomKeyboardDetail {
   id: number
   title?: string
   description?: string
-  pcbs?: Array<'Wired Hotswap' | 'Wireless Hotswap' | ' Wired Solder'>
-  plates?: Array<'PC' | 'Steel' | 'FR4' | 'POM' | 'Aluminium'>
+  pcbs?: Array<string>
+  plates?: Array<string>
   caseColors?: Array<string>
   caseMaterials?: Array<string>
   keycaps?: Array<string>
