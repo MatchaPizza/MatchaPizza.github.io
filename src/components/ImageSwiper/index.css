@@ -18,8 +18,8 @@
   scroll-padding-right: 0;
 }
 
-.slide-container > div {
-  scroll-snap-align: start;
+.slide-container > img {
+  scroll-snap-align: end;
 }
 
 .slide-container::-webkit-scrollbar {
