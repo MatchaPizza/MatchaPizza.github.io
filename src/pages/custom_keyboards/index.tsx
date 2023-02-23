@@ -11,6 +11,7 @@ import Chip from '@components/Chip'
 import Skeleton from '@components/Skeleton'
 import Tooltip from '@components/Tooltip'
 import IconButton from '@components/IconButton'
+import KeyboardCard from './KeyboardCard'
 
 const CustomKeyboardsPage = () => {
   const windowWidth = useWindowWidth()
@@ -26,11 +27,40 @@ const CustomKeyboardsPage = () => {
       .sort((prev, cur) => (prev.id > cur.id ? -1 : 1)),
   )
 
+  // useEffect(() => {
+  //   customKeyboards.forEach(async (customKeyboard) => {
+  //     try {
+  //       const customKeyboardDetail: CustomKeyboardDetail = await import(
+  //         `@custom_keyboards/${customKeyboard.path}`
+  //       )
+  //       setCustomKeyboardDetailList((list) =>
+  //         list.map((element) =>
+  //           element.id === customKeyboardDetail.id && !element.loaded
+  //             ? { ...customKeyboardDetail, loaded: true }
+  //             : element,
+  //         ),
+  //       )
+  //     } catch (err) {
+  //       console.error(`failed to load from ${customKeyboard.path}`)
+  //     }
+  //   })
+  // }, [])
+
   useEffect(() => {
-    customKeyboards.forEach(async (customKeyboard) => {
-      try {
+    const observer = new IntersectionObserver(async (entries) => {
+      entries.forEach(async (entry) => {
+        if (!entry.isIntersecting) return
+
+        const keyboardAttribute = entry.target.getAttribute('data-keyboard-id')
+        if (keyboardAttribute === null) return
+
+        const keyboardId = parseInt(keyboardAttribute)
+        const keyboardPath = customKeyboards.find(
+          (customKeyboard) => customKeyboard.id === keyboardId,
+        )?.path
+        if (keyboardPath === undefined) return
         const customKeyboardDetail: CustomKeyboardDetail = await import(
-          `@custom_keyboards/${customKeyboard.path}`
+          `@custom_keyboards/${keyboardPath}`
         )
         setCustomKeyboardDetailList((list) =>
           list.map((element) =>
@@ -39,27 +69,16 @@ const CustomKeyboardsPage = () => {
               : element,
           ),
         )
-      } catch (err) {
-        console.error(`failed to load from ${customKeyboard.path}`)
-      }
+
+        observer.unobserve(entry.target)
+      })
     })
+
+    const cards = document.getElementsByClassName('keyboard-card')
+    for (let i = 0; i < cards.length; i++) {
+      observer.observe(cards[i])
+    }
   }, [])
-
-  // TODO add observer for lazy loading cards
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver((entries) => {
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //         console.log('isintersecting', entry.target)
-  //       }
-  //     })
-  //   })
-
-  //   const cards = document.getElementsByClassName('card')
-  //   for (let i = 0; i < cards.length; i++) {
-  //     observer.observe(cards[i])
-  //   }
-  // }, [])
 
   let chipIndex = 0
 
@@ -147,9 +166,10 @@ const CustomKeyboardsPage = () => {
       <div style={styles.content.container}>
         {customKeyboardDetailList.map(
           (customKeyboardDetail, customKeyboardIndex) => (
-            <Card
+            <KeyboardCard
               styles={styles.customKeyboard.card}
               key={`custom-keyboard-${customKeyboardIndex}`}
+              keyboardId={customKeyboardDetail.id}
             >
               {customKeyboardDetail.loaded ? (
                 <Fragment>
@@ -385,7 +405,7 @@ const CustomKeyboardsPage = () => {
                   </div>
                 </Fragment>
               )}
-            </Card>
+            </KeyboardCard>
           ),
         )}
       </div>
