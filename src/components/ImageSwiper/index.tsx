@@ -1,13 +1,5 @@
 import IconButton from '@components/IconButton'
-import {
-  cloneElement,
-  createRef,
-  CSSProperties,
-  RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { CSSProperties, useEffect, useRef, useState } from 'react'
 import './index.css'
 
 const ImageSwiper = ({
@@ -52,14 +44,38 @@ const ImageSwiper = ({
     if (imageIndex + 1 < children.length) scrollToIndex(imageIndex + 1)
   }
 
+  const handleZoomInClick = () => {
+    const src = children[imageIndex].props.src
+    if (src && typeof src === 'string') {
+      setImageSource(src)
+      setZoomed(true)
+    }
+  }
+
+  const handleZoomedPrevClick = () => {
+    if (imageIndex - 1 > -1) {
+      scrollToIndex(imageIndex - 1)
+      const src = children[imageIndex - 1].props.src
+      if (src && typeof src === 'string') {
+        setImageSource(src)
+      }
+    }
+  }
+
+  const handleZoomedNextClick = () => {
+    if (imageIndex + 1 < children.length) {
+      scrollToIndex(imageIndex + 1)
+      const src = children[imageIndex + 1].props.src
+      if (src && typeof src === 'string') {
+        setImageSource(src)
+      }
+    }
+  }
+
   return (
     <div className="image-swiper" style={{ ...styles, width, height }}>
       <div className="slide-container" ref={containerRef}>
-        {children.map((child, index) => {
-          return cloneElement(child, {
-            key: `image-${index}`,
-          })
-        })}
+        {children}
       </div>
       <div className="left-button-container">
         <IconButton
@@ -92,13 +108,7 @@ const ImageSwiper = ({
       </div>
       <div className="zoom-in-button-container">
         <IconButton
-          onClick={() => {
-            const src = children[imageIndex].props.src
-            if (src && typeof src === 'string') {
-              setImageSource(src)
-              setZoomed(true)
-            }
-          }}
+          onClick={handleZoomInClick}
           icon="images/icons/zoom-in.png"
           styles={{
             width: 50,
@@ -127,6 +137,36 @@ const ImageSwiper = ({
               height: 50,
             }}
             onClick={() => setZoomed(false)}
+          />
+        </div>
+        <div
+          className="zoomed-left-button-container"
+          style={{ display: zoomed ? 'flex' : 'none' }}
+        >
+          <IconButton
+            icon="images/icons/left-arrow.png"
+            styles={{
+              width: 50,
+              height: 50,
+              pointerEvents: 'all',
+            }}
+            onClick={handleZoomedPrevClick}
+            disabled={imageIndex === 0}
+          />
+        </div>
+        <div
+          className="zoomed-right-button-container"
+          style={{ display: zoomed ? 'flex' : 'none' }}
+        >
+          <IconButton
+            icon="images/icons/right-arrow.png"
+            styles={{
+              width: 50,
+              height: 50,
+              pointerEvents: 'all',
+            }}
+            onClick={handleZoomedNextClick}
+            disabled={imageIndex === children.length - 1}
           />
         </div>
       </div>
