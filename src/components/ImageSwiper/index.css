@@ -18,6 +18,10 @@
   scroll-padding-right: 0;
 }
 
+.slide-container > div {
+  scroll-snap-align: start;
+}
+
 .slide-container::-webkit-scrollbar {
   height: 16px;
 }
@@ -92,4 +96,22 @@
   position: fixed;
   top: 32px;
   right: 32px;
+}
+
+.zoomed-left-button-container {
+  position: fixed;
+  top: 0;
+  left: 32px;
+  height: 100%;
+  align-items: center;
+  pointer-events: none;
+}
+
+.zoomed-right-button-container {
+  position: fixed;
+  top: 0;
+  right: 32px;
+  height: 100%;
+  align-items: center;
+  pointer-events: none;
 }

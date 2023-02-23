@@ -37,7 +37,6 @@
 .image-slide {
   height: 100%;
   object-fit: cover;
-  scroll-snap-align: end;
   background: linear-gradient(-45deg, #dddddd, #f0f0f0, #dddddd, #f0f0f0);
   background-size: 400% 400%;
   -webkit-animation: Gradient 2.25s ease infinite;
