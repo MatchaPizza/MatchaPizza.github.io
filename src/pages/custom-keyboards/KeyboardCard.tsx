@@ -1,12 +1,8 @@
-import { CSSProperties } from 'react'
-
 const KeyboardCard = ({
   children,
-  styles,
   keyboardId,
 }: {
   children: any
-  styles?: CSSProperties
   keyboardId: number
 }) => {
   return (
@@ -16,7 +12,6 @@ const KeyboardCard = ({
         backgroundColor: 'white',
         color: '#595959',
         borderRadius: 10,
-        ...styles,
       }}
       data-keyboard-id={keyboardId}
     >

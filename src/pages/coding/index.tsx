@@ -1,6 +1,6 @@
 import Card from '@components/Card'
 import LinkCard from '@components/LinkCard'
-import { CSSProperties, Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import ProjectDetail, { InitProjectDetail } from '@interfaces/projects'
 import projects from '@projects/index.json'
 import IconButton from '@components/IconButton'

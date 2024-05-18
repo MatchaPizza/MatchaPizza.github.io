@@ -1,4 +1,3 @@
-import { CSSProperties } from 'react'
 import './index.css'
 
 const LazyImage = ({
@@ -6,20 +5,18 @@ const LazyImage = ({
   alt,
   width,
   height,
-  styles,
 }: {
   src: string
   alt: string
   width: number | string
   height: number | string
-  styles?: CSSProperties
 }) => {
   return (
     <img
       className="lazy-image"
       src={src}
       alt={alt}
-      style={{ ...styles, width, height }}
+      style={{ width, height }}
       loading="lazy"
     />
   )

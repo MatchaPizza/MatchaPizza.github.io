@@ -1,19 +1,16 @@
-import { CSSProperties } from 'react'
 import './index.css'
 
 const LinkCard = ({
   children,
-  styles,
   href,
   title,
 }: {
   children: any
-  styles?: CSSProperties
   href: string
   title?: string
 }) => {
   return (
-    <div className="link-card" style={styles}>
+    <div className="link-card">
       <a className="overlay" href={href} title={title}>
         {href}
       </a>

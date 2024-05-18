@@ -1,15 +1,13 @@
 import IconButton from '@components/IconButton'
-import { CSSProperties, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './index.css'
 
 const ImageSwiper = ({
   children,
-  styles,
   width,
   height,
 }: {
   children: Array<JSX.Element>
-  styles?: CSSProperties
   width: number | string
   height: number | string
 }) => {
@@ -73,7 +71,7 @@ const ImageSwiper = ({
   }
 
   return (
-    <div className="image-swiper" style={{ ...styles, width, height }}>
+    <div className="image-swiper" style={{ width, height }}>
       <div className="slide-container" ref={containerRef}>
         {children}
       </div>

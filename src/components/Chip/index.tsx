@@ -1,4 +1,3 @@
-import { CSSProperties } from 'react'
 import './index.css'
 
 const colors: Array<string> = [
@@ -42,15 +41,7 @@ const colors: Array<string> = [
   '#660076',
 ]
 
-const Chip = ({
-  children,
-  index,
-  styles,
-}: {
-  children: string
-  index?: number
-  styles?: CSSProperties
-}) => {
+const Chip = ({ children, index }: { children: string; index?: number }) => {
   const backgroundColor = colors[index ? index % colors.length : 0]
 
   const hexToRgb = (hexString: string) => {
@@ -74,7 +65,6 @@ const Chip = ({
       style={{
         backgroundColor,
         color: getContrastColor(backgroundColor),
-        ...styles,
       }}
     >
       <p>{children}</p>

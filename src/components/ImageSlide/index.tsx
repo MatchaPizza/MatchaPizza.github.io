@@ -1,17 +1,15 @@
-import { CSSProperties, RefObject } from 'react'
+import { RefObject } from 'react'
 import './index.css'
 
 const ImageSlide = ({
   src,
   alt,
   loading = 'lazy',
-  styles,
   imageRef,
 }: {
   src: string
   alt: string
   loading?: 'lazy' | 'eager'
-  styles?: CSSProperties
   imageRef?: RefObject<HTMLImageElement>
 }) => {
   return (
@@ -22,7 +20,6 @@ const ImageSlide = ({
       loading={loading}
       style={{
         minWidth: '100%',
-        ...styles,
       }}
       ref={imageRef}
     />
