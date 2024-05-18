@@ -11,15 +11,30 @@
   gap: 16px;
 }
 
-.matcha-icon {
+.icon-container {
+  position: relative;
+  overflow: hidden;
   height: 40px;
   width: 40px;
-  cursor: pointer;
+}
+
+.matcha-icon {
+  height: 100%;
+  width: 100%;
+}
+
+.icon-container .overlay {
+  color: transparent;
+  user-select: none;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .github-icon {
-  height: 40px;
-  width: 40px;
-  cursor: pointer;
-  margin-right: 8px;
+  height: 100%;
+  width: 100%;
 }

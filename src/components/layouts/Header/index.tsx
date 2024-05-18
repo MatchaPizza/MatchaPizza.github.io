@@ -1,35 +1,35 @@
-import Tooltip from '@components/Tooltip'
-import { openProjectGithubPage } from '@utils/github'
-import { useNavigate } from 'react-router-dom'
+import { MatchaPizzaGithubPageRepo } from '@utils/github'
 import './index.css'
 
 const Header = () => {
-  const navigate = useNavigate()
-
-  const redirectHome = () => {
-    navigate('/')
-  }
-
   return (
     <header className="header-container">
-      <Tooltip message="home" position="bottom">
+      <div className="icon-container">
         <img
           src="images/icons/matcha.png"
           alt="matcha-icon"
           className="matcha-icon"
-          onClick={redirectHome}
         />
-      </Tooltip>
+        <a href="/" className="overlay" title="Home">
+          home
+        </a>
+      </div>
       <h3>Joak's Hobby Page</h3>
       <div style={{ flex: 1 }} />
-      <Tooltip message="github page repository" position="left">
+      <div className="icon-container">
         <img
           src="images/icons/github-mark-white.png"
           alt="github-icon"
           className="github-icon"
-          onClick={openProjectGithubPage}
         />
-      </Tooltip>
+        <a
+          href={MatchaPizzaGithubPageRepo}
+          className="overlay"
+          title="MatchaPizza's github repository"
+        >
+          MatchaPizza's github repository
+        </a>
+      </div>
     </header>
   )
 }

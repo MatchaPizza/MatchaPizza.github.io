@@ -1,0 +1,23 @@
+a.button {
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  opacity: 80%;
+  padding: 8px;
+  cursor: pointer;
+  color: rgb(110, 110, 110);
+}
+
+a.button:hover {
+  opacity: 100%;
+}
+
+a.disabled {
+  opacity: 10%;
+  color: rgb(196, 196, 196);
+}
+
+a.disabled:hover {
+  opacity: 10%;
+  cursor: default;
+}

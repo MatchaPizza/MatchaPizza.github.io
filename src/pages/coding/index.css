@@ -1,0 +1,86 @@
+.coding-container {
+  flex: 1;
+  margin: 64px 128px;
+}
+
+.coding-container .title {
+  font-size: 3rem;
+}
+
+.text-card {
+  padding: 16px;
+  margin: 8px 0px;
+}
+
+.text-card p {
+  text-align: center;
+}
+
+.project-container,
+.avatar-container {
+  margin: 8px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.project-container .card {
+  padding: 16px;
+  margin: 8px;
+}
+
+.project-container .card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.project-container .card .lazy-image {
+  margin: 8px 0;
+  object-fit: cover;
+}
+
+.project-container .card .button-container {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.project-container .card .icon-button {
+  height: 32px;
+  width: 32px;
+}
+
+.avatar-container .link-card {
+  margin: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-container .link-card .lazy-image {
+  border-radius: 100%;
+}
+
+.avatar-container .link-card p {
+  margin-top: 8px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .coding-container {
+    margin: 16px;
+  }
+
+  .coding-container .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .project-container,
+  .avatar-container {
+    grid-template-columns: 100%;
+  }
+}

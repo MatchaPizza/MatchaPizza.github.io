@@ -4,8 +4,8 @@ import MainLayout from '@components/layouts/MainLayout'
 
 // pages
 const MainPage = lazy(() => import('@pages/index'))
-const NotFound = lazy(() => import('@pages/not_found'))
-const CustomKeyboardsPage = lazy(() => import('@pages/custom_keyboards'))
+const NotFound = lazy(() => import('@pages/not-found'))
+const CustomKeyboardsPage = lazy(() => import('@pages/custom-keyboards'))
 const CodingPage = lazy(() => import('@pages/coding'))
 const GamesPage = lazy(() => import('@pages/games'))
 

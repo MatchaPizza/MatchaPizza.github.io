@@ -1,0 +1,62 @@
+.games-container {
+  flex: 1;
+  margin: 64px 128px;
+}
+
+.games-container .title {
+  font-size: 3rem;
+}
+
+.text-card {
+  padding: 16px;
+  margin: 8px 0;
+}
+
+.text-card p {
+  text-align: center;
+}
+
+.game-card-container {
+  margin: 8px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.game-card-container .card {
+  margin: 8px;
+  padding: 16px;
+}
+
+.game-card-container .card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.game-card-container .card .button-container {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.game-card-container .card .icon-button {
+  height: 32px;
+  width: 32px;
+}
+
+@media screen and (max-width: 768px) {
+  .games-container {
+    margin: 16px;
+  }
+
+  .games-container .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .game-card-container {
+    grid-template-columns: 100%;
+  }
+}

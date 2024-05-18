@@ -1,6 +1,5 @@
-import { CSSProperties, Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import customKeyboards from '@custom_keyboards/index.json'
-import useWindowWidth from '@hooks/useWindowWidth'
 import CustomKeyboardDetail, {
   InitCustomKeyboardDetail,
 } from '@interfaces/custom_keyboards'
@@ -9,13 +8,11 @@ import ImageSwiper from '@components/ImageSwiper'
 import ImageSlide from '@components/ImageSlide'
 import Chip from '@components/Chip'
 import Skeleton from '@components/Skeleton'
-import Tooltip from '@components/Tooltip'
 import IconButton from '@components/IconButton'
 import KeyboardCard from './KeyboardCard'
+import './index.css'
 
 const CustomKeyboardsPage = () => {
-  const windowWidth = useWindowWidth()
-  const tabletView = windowWidth <= 768
   const [customKeyboardDetailList, setCustomKeyboardDetailList] = useState<
     Array<CustomKeyboardDetail>
   >(
@@ -26,25 +23,6 @@ const CustomKeyboardsPage = () => {
       }))
       .sort((prev, cur) => (prev.id > cur.id ? -1 : 1)),
   )
-
-  // useEffect(() => {
-  //   customKeyboards.forEach(async (customKeyboard) => {
-  //     try {
-  //       const customKeyboardDetail: CustomKeyboardDetail = await import(
-  //         `@custom_keyboards/${customKeyboard.path}`
-  //       )
-  //       setCustomKeyboardDetailList((list) =>
-  //         list.map((element) =>
-  //           element.id === customKeyboardDetail.id && !element.loaded
-  //             ? { ...customKeyboardDetail, loaded: true }
-  //             : element,
-  //         ),
-  //       )
-  //     } catch (err) {
-  //       console.error(`failed to load from ${customKeyboard.path}`)
-  //     }
-  //   })
-  // }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(async (entries) => {
@@ -82,92 +60,19 @@ const CustomKeyboardsPage = () => {
 
   let chipIndex = 0
 
-  const styles: Record<string, Record<string, CSSProperties>> = {
-    main: {
-      container: {
-        flex: 1,
-        margin: `${tabletView ? 16 : 64}px ${tabletView ? 16 : 128}px`,
-      },
-      titleText: {
-        fontSize: tabletView ? 32 : 48,
-      },
-    },
-    content: {
-      card: {
-        padding: 16,
-        margin: '8px 0px',
-      },
-      text: {
-        textAlign: 'center',
-      },
-      container: {
-        marginTop: 16,
-        display: 'grid',
-        gridTemplateColumns: windowWidth <= 1400 ? '100%' : '50% 50%',
-      },
-    },
-    customKeyboard: {
-      card: {
-        margin: 8,
-        padding: 16,
-        height: 'fit-content',
-      },
-      cardTitle: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        margin: '8px 0px',
-      },
-      chipGroupContainer: {
-        width: '100%',
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: 8,
-        fontSize: 10,
-      },
-      chipContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        gap: 4,
-      },
-      chipTitle: {
-        fontWeight: 'bold',
-      },
-      description: {
-        margin: '8px 0px',
-      },
-      notFulfilled: {
-        fontStyle: 'italic',
-        fontSize: 24,
-        margin: '8px 0px',
-        color: '#e841bd',
-      },
-      buttonContainer: {
-        marginTop: 8,
-        display: 'flex',
-        justifyContent: 'flex-end',
-        gap: 8,
-      },
-      iconButton: {
-        height: 32,
-        width: 32,
-      },
-    },
-  }
-
   return (
-    <div style={styles.main.container}>
-      <h1 style={styles.main.titleText}>Custom Keyboards</h1>
-      <Card styles={styles.content.card}>
-        <p style={styles.content.text}>
+    <div className="custom-keyboards-container">
+      <h1 className="title">Custom Keyboards</h1>
+      <Card className="text-card">
+        <p>
           I love building and typing on custom keyboards. I probably can't come
           back to type on a membrane keyboard again 😭
         </p>
       </Card>
-      <div style={styles.content.container}>
+      <div className="keyboard-card-container">
         {customKeyboardDetailList.map(
           (customKeyboardDetail, customKeyboardIndex) => (
             <KeyboardCard
-              styles={styles.customKeyboard.card}
               key={`custom-keyboard-${customKeyboardIndex}`}
               keyboardId={customKeyboardDetail.id}
             >
@@ -188,19 +93,17 @@ const CustomKeyboardsPage = () => {
                         )}
                       </ImageSwiper>
                     )}
-                  <h2 style={styles.customKeyboard.cardTitle}>
-                    {customKeyboardDetail.title}
-                  </h2>
+                  <h2>{customKeyboardDetail.title}</h2>
                   {!customKeyboardDetail.fulfilled && (
-                    <p style={styles.customKeyboard.notFulfilled}>
+                    <p className="not-fulfilled">
                       Keyboard in shipment state or group buy status is not
                       fulfilled yet ...
                     </p>
                   )}
-                  <div style={styles.customKeyboard.chipGroupContainer}>
+                  <div className="chip-group-container">
                     {customKeyboardDetail.layout && (
-                      <div style={styles.customKeyboard.chipContainer}>
-                        <p style={styles.customKeyboard.chipTitle}>Layout</p>
+                      <div className="chip-container">
+                        <p>Layout</p>
                         <Chip index={chipIndex++}>
                           {customKeyboardDetail.layout}
                         </Chip>
@@ -208,8 +111,8 @@ const CustomKeyboardsPage = () => {
                     )}
                     {customKeyboardDetail.pcbs &&
                       customKeyboardDetail.pcbs.length && (
-                        <div style={styles.customKeyboard.chipContainer}>
-                          <p style={styles.customKeyboard.chipTitle}>PCB</p>
+                        <div className="chip-container">
+                          <p>PCB</p>
                           {customKeyboardDetail.pcbs.map((pcb, pcbIndex) => (
                             <Chip index={chipIndex++} key={`pcb-${pcbIndex}`}>
                               {pcb}
@@ -219,8 +122,8 @@ const CustomKeyboardsPage = () => {
                       )}
                     {customKeyboardDetail.plates &&
                       customKeyboardDetail.plates.length && (
-                        <div style={styles.customKeyboard.chipContainer}>
-                          <p style={styles.customKeyboard.chipTitle}>Plate</p>
+                        <div className="chip-container">
+                          <p>Plate</p>
                           {customKeyboardDetail.plates.map(
                             (plate, plateIndex) => (
                               <Chip
@@ -235,10 +138,8 @@ const CustomKeyboardsPage = () => {
                       )}
                     {customKeyboardDetail.caseColors &&
                       customKeyboardDetail.caseColors.length && (
-                        <div style={styles.customKeyboard.chipContainer}>
-                          <p style={styles.customKeyboard.chipTitle}>
-                            Case Color
-                          </p>
+                        <div className="chip-container">
+                          <p>Case Color</p>
                           {customKeyboardDetail.caseColors.map(
                             (caseColor, caseColorIndex) => (
                               <Chip
@@ -253,10 +154,8 @@ const CustomKeyboardsPage = () => {
                       )}
                     {customKeyboardDetail.caseMaterials &&
                       customKeyboardDetail.caseMaterials.length && (
-                        <div style={styles.customKeyboard.chipContainer}>
-                          <p style={styles.customKeyboard.chipTitle}>
-                            Case Material
-                          </p>
+                        <div className="chip-container">
+                          <p>Case Material</p>
                           {customKeyboardDetail.caseMaterials.map(
                             (caseMaterial, caseMaterialIndex) => (
                               <Chip
@@ -271,8 +170,8 @@ const CustomKeyboardsPage = () => {
                       )}
                     {customKeyboardDetail.keycaps &&
                       customKeyboardDetail.keycaps.length && (
-                        <div style={styles.customKeyboard.chipContainer}>
-                          <p style={styles.customKeyboard.chipTitle}>Keycap</p>
+                        <div className="chip-container">
+                          <p>Keycap</p>
                           {customKeyboardDetail.keycaps.map(
                             (keycap, keycapIndex) => (
                               <Chip
@@ -287,8 +186,8 @@ const CustomKeyboardsPage = () => {
                       )}
                     {customKeyboardDetail.switches &&
                       customKeyboardDetail.switches.length && (
-                        <div style={styles.customKeyboard.chipContainer}>
-                          <p style={styles.customKeyboard.chipTitle}>Switch</p>
+                        <div className="chip-container">
+                          <p>Switch</p>
                           {customKeyboardDetail.switches.map(
                             (keySwitch, keySwitchIndex) => (
                               <Chip
@@ -303,10 +202,8 @@ const CustomKeyboardsPage = () => {
                       )}
                     {customKeyboardDetail.stabilizers &&
                       customKeyboardDetail.stabilizers.length && (
-                        <div style={styles.customKeyboard.chipContainer}>
-                          <p style={styles.customKeyboard.chipTitle}>
-                            Stabilizer
-                          </p>
+                        <div className="chip-container">
+                          <p>Stabilizer</p>
                           {customKeyboardDetail.stabilizers.map(
                             (stabilizer, stabilizerIndex) => (
                               <Chip
@@ -321,10 +218,8 @@ const CustomKeyboardsPage = () => {
                       )}
                     {customKeyboardDetail.dampenings &&
                       customKeyboardDetail.dampenings.length && (
-                        <div style={styles.customKeyboard.chipContainer}>
-                          <p style={styles.customKeyboard.chipTitle}>
-                            Dampening
-                          </p>
+                        <div className="chip-container">
+                          <p>Dampening</p>
                           {customKeyboardDetail.dampenings.map(
                             (dampening, dampeningIndex) => (
                               <Chip
@@ -339,10 +234,8 @@ const CustomKeyboardsPage = () => {
                       )}
                     {customKeyboardDetail.mountings &&
                       customKeyboardDetail.mountings.length && (
-                        <div style={styles.customKeyboard.chipContainer}>
-                          <p style={styles.customKeyboard.chipTitle}>
-                            Mounting
-                          </p>
+                        <div className="chip-container">
+                          <p>Mounting</p>
                           {customKeyboardDetail.mountings.map(
                             (mounting, mountingIndex) => (
                               <Chip
@@ -356,20 +249,18 @@ const CustomKeyboardsPage = () => {
                         </div>
                       )}
                   </div>
-                  <p style={styles.customKeyboard.description}>
+                  <p className="description">
                     {customKeyboardDetail.description}
                   </p>
-                  <div style={styles.customKeyboard.buttonContainer}>
+                  <div className="button-container">
                     {customKeyboardDetail.website && (
-                      <Tooltip message="Link">
-                        <IconButton
-                          styles={styles.customKeyboard.iconButton}
-                          icon="/images/icons/link.png"
-                          onClick={() =>
-                            window.open(customKeyboardDetail.website)
-                          }
-                        />
-                      </Tooltip>
+                      <IconButton
+                        icon="/images/icons/link.png"
+                        title="Link"
+                        onClick={() =>
+                          window.open(customKeyboardDetail.website)
+                        }
+                      />
                     )}
                   </div>
                 </Fragment>
@@ -396,7 +287,7 @@ const CustomKeyboardsPage = () => {
                     width="100%"
                     styles={{ margin: '8px 0px' }}
                   />
-                  <div style={styles.customKeyboard.buttonContainer}>
+                  <div className="button-container">
                     <Skeleton
                       width={32}
                       height={32}

@@ -1,0 +1,123 @@
+/** introduction **/
+a.clickable-text {
+  text-decoration: none;
+  color: rgb(228, 195, 250);
+  cursor: pointer;
+}
+
+a.clickable-text:hover {
+  color: rgb(255, 255, 255);
+}
+
+.introduction-container {
+  min-height: calc(100vh - 86px);
+  background-image: url(../../public/images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.main-text-box {
+  min-height: calc(100vh - 86px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+
+.main-text-box .main-text {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.main-text-box .secondary-text {
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.introduction-container .image-text {
+  font-size: 1rem;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+}
+
+.introduction-container .icon-button {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+}
+
+@media screen and (max-width: 768px) {
+  .main-text-box .main-text {
+    font-size: 3rem;
+  }
+
+  .main-text-box .secondary-text {
+    font-size: 1rem;
+  }
+
+  .introduction-container .image-text {
+    font-size: 0.7rem;
+  }
+}
+/** introduction **/
+
+/** section container **/
+.section-container {
+  padding: 128px 128px 32px;
+}
+
+.section-container .title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.content-container {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.link-card {
+  margin: 8px;
+  padding: 16px;
+}
+
+.link-card .title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.link-card .lazy-image {
+  object-fit: cover;
+}
+
+.link-card p {
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .section-container .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .section-container {
+    padding: 128px 16px 32px;
+  }
+
+  .content-container {
+    grid-template-columns: 100%;
+  }
+}
+/** section container **/

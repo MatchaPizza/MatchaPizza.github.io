@@ -1,13 +1,9 @@
 const JoakIconLink = 'https://avatars.githubusercontent.com/u/47177060'
 const MatchaPizzaIconLink = 'https://avatars.githubusercontent.com/u/124992812'
-
-const openMatchaPizzaPage = () => {
-  window.open('https://github.com/matchapizza')
-}
-
-const openJoakPage = () => {
-  window.open('https://github.com/joakqq')
-}
+const MatchaPizzaGithubRepo = 'https://github.com/matchapizza';
+const JoakGithubRepo = 'https://github.com/joakqq';
+const JoakGithubPage = 'https://joakqq.github.io';
+const MatchaPizzaGithubPageRepo = 'https://github.com/MatchaPizza/MatchaPizza.github.io';
 
 const openProjectGithubPage = () => {
   window.open('https://github.com/MatchaPizza/MatchaPizza.github.io')
@@ -18,10 +14,12 @@ const redirectMainPage = () => {
 }
 
 export {
+  MatchaPizzaGithubRepo,
+  JoakGithubRepo,
   JoakIconLink,
   MatchaPizzaIconLink,
-  openJoakPage,
-  openMatchaPizzaPage,
+  JoakGithubPage,
+  MatchaPizzaGithubPageRepo,
   openProjectGithubPage,
   redirectMainPage,
 }

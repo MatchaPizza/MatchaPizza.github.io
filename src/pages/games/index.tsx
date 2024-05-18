@@ -1,15 +1,12 @@
 import Card from '@components/Card'
-import useWindowWidth from '@hooks/useWindowWidth'
-import { CSSProperties, Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import games from '@games/index.json'
 import GameDetail, { InitGameDetail } from '@interfaces/games'
-import Tooltip from '@components/Tooltip'
 import IconButton from '@components/IconButton'
 import Skeleton from '@components/Skeleton'
+import './index.css'
 
 const GamesPage = () => {
-  const windowWidth = useWindowWidth()
-  const tabletView = windowWidth <= 768
   const [gameDetailList, setGameDetailList] = useState<Array<GameDetail>>(
     games.map((game) => ({
       ...InitGameDetail,
@@ -34,87 +31,36 @@ const GamesPage = () => {
     })
   }, [])
 
-  const styles: Record<string, Record<string, CSSProperties>> = {
-    main: {
-      container: {
-        flex: 1,
-        margin: `${tabletView ? 16 : 64}px ${tabletView ? 16 : 128}px`,
-      },
-      titleText: {
-        fontSize: tabletView ? 32 : 48,
-      },
-    },
-    content: {
-      card: {
-        padding: 16,
-        margin: '8px 0px',
-      },
-      text: {
-        textAlign: 'center',
-      },
-    },
-    game: {
-      container: {
-        margin: 8,
-        display: 'grid',
-        gridTemplateColumns: windowWidth <= 1400 ? '100%' : '50% 50%',
-      },
-      card: {
-        margin: 8,
-        padding: 16,
-      },
-      cardTitle: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 8,
-      },
-      buttonContainer: {
-        marginTop: 8,
-        display: 'flex',
-        justifyContent: 'flex-end',
-        gap: 8,
-      },
-      iconButton: {
-        height: 32,
-        width: 32,
-      },
-    },
-  }
-
   return (
-    <div style={styles.main.container}>
-      <h1 style={styles.main.titleText}>Games</h1>
-      <Card styles={styles.content.card}>
-        <p style={styles.content.text}>
+    <div className="games-container">
+      <h1 className="title">Games</h1>
+      <Card className="text-card">
+        <p>
           I game even I don't play a lot of titles. Here are the games I mostly
           play
         </p>
       </Card>
-      <div style={styles.game.container}>
+      <div className="game-card-container">
         {gameDetailList.map((gameDetail, gameIndex) => (
-          <Card key={`game-card-${gameIndex}`} styles={styles.game.card}>
+          <Card key={`game-card-${gameIndex}`}>
             {gameDetail.loaded ? (
               <Fragment>
-                <h2 style={styles.game.cardTitle}>{gameDetail.title}</h2>
+                <h2>{gameDetail.title}</h2>
                 <p>{gameDetail.description}</p>
-                <div style={styles.game.buttonContainer}>
+                <div className="button-container">
                   {gameDetail.personalSite && (
-                    <Tooltip message="Personal Game Page">
-                      <IconButton
-                        styles={styles.game.iconButton}
-                        icon="/images/icons/game.png"
-                        onClick={() => window.open(gameDetail.personalSite)}
-                      />
-                    </Tooltip>
+                    <IconButton
+                      icon="/images/icons/game.png"
+                      title="Personal Game Page"
+                      onClick={() => window.open(gameDetail.personalSite)}
+                    />
                   )}
                   {gameDetail.website && (
-                    <Tooltip message="Game Site">
-                      <IconButton
-                        styles={styles.game.iconButton}
-                        icon="/images/icons/link.png"
-                        onClick={() => window.open(gameDetail.website)}
-                      />
-                    </Tooltip>
+                    <IconButton
+                      icon="/images/icons/link.png"
+                      title="Game Site"
+                      onClick={() => window.open(gameDetail.website)}
+                    />
                   )}
                 </div>
               </Fragment>
@@ -126,7 +72,7 @@ const GamesPage = () => {
                   height={19}
                   styles={{ margin: '8px 0px' }}
                 />
-                <div style={styles.game.buttonContainer}>
+                <div className="button-container">
                   <Skeleton
                     width={32}
                     height={32}
@@ -143,8 +89,8 @@ const GamesPage = () => {
           </Card>
         ))}
       </div>
-      <Card styles={styles.content.card}>
-        <p style={styles.content.text}>
+      <Card className="text-card">
+        <p>
           I downloaded many games on steam or other platforms, but never have
           the mood to start or finish them. However, I do watch people streaming
           games on Twitch so I guess that counts
