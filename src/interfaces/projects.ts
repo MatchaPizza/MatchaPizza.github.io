@@ -1,7 +1,9 @@
+import { ImageDetail } from "./image"
+
 interface ProjectDetail {
   id: number
   title?: string
-  imagePath?: string
+  image?: ImageDetail
   website?: string
   github?: string
   description?: string

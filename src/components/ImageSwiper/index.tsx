@@ -14,7 +14,7 @@ const ImageSwiper = ({
   const [imageIndex, setImageIndex] = useState<number>(0)
   const containerRef = useRef<HTMLDivElement>(null)
   const [zoomed, setZoomed] = useState<boolean>(false)
-  const [imageSource, setImageSource] = useState<string>('')
+  const [imageSource, setImageSource] = useState<string>("")
 
   useEffect(() => {
     const listeningFunc = (e: any) => {
@@ -43,9 +43,9 @@ const ImageSwiper = ({
   }
 
   const handleZoomInClick = () => {
-    const src = children[imageIndex].props.src
-    if (src && typeof src === 'string') {
-      setImageSource(src)
+    const source = children[imageIndex].props.src
+    if (source) {
+      setImageSource(() => source)
       setZoomed(true)
     }
   }
@@ -53,9 +53,9 @@ const ImageSwiper = ({
   const handleZoomedPrevClick = () => {
     if (imageIndex - 1 > -1) {
       scrollToIndex(imageIndex - 1)
-      const src = children[imageIndex - 1].props.src
-      if (src && typeof src === 'string') {
-        setImageSource(src)
+      const source = children[imageIndex - 1].props.src
+      if (source) {
+        setImageSource(() => source)
       }
     }
   }
@@ -63,9 +63,9 @@ const ImageSwiper = ({
   const handleZoomedNextClick = () => {
     if (imageIndex + 1 < children.length) {
       scrollToIndex(imageIndex + 1)
-      const src = children[imageIndex + 1].props.src
-      if (src && typeof src === 'string') {
-        setImageSource(src)
+      const source = children[imageIndex + 1].props.src
+      if (source) {
+        setImageSource(() => source)
       }
     }
   }
@@ -120,9 +120,9 @@ const ImageSwiper = ({
       >
         <img
           src={imageSource}
+          width="100%"
+          height="100%"
           alt="zoomed"
-          className="zoomed-image"
-          loading="lazy"
         />
         <div
           className="zoom-out-button-container"

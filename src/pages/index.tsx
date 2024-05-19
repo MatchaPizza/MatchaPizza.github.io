@@ -51,6 +51,7 @@ const MainPage = () => {
               width="100%"
               height={300}
               src="/images/custom-keyboards.webp"
+              hash="LFEMk3Mk~oTsPXIAs+JO%ytPDjsr"
               alt="custom-keyboards"
             />
             <p>I love building custom keyboards, and type on them</p>
@@ -61,6 +62,7 @@ const MainPage = () => {
               width="100%"
               height={300}
               src="/images/coding.jpg"
+              hash="LAEMRSni4nD%5AayM_%g~Vj[D%.8"
               alt="coding"
             />
             <p>I like coding, especially in AI and NLP</p>
@@ -71,6 +73,7 @@ const MainPage = () => {
               width="100%"
               height={300}
               src="/images/games.jpg"
+              hash="LgHn,S$]$y?H.6xwNLNF~qt7V?og"
               alt="games"
             />
             <p>

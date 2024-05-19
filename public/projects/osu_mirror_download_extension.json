@@ -1,7 +1,12 @@
 {
   "id": 1,
   "title": "Osu Mirror Download Extension",
-  "imagePath": "osu.png",
+  "image": {
+    "path": "osu.png",
+    "hash": "U58XUw%O8{_4pK9YbX%MW=IUs:t6jFtRo#V?",
+    "originalWidth": 240,
+    "originalHeight": 180
+  },
   "website": "https://chrome.google.com/webstore/detail/joaks-osu-mirror-download/fombdbdmedmppeffmnbhcpdgfdopffbb",
   "github": "https://github.com/MatchaPizza/osu_mirror_download_extension",
   "description": "This is an google chrome extension to download beatmaps from third-party APIs, it is published on chrome web store."

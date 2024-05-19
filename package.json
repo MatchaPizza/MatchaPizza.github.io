@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://MatchaPizza.github.io",
+  "module": "es6",
   "dependencies": {
     "@craco/craco": "^7.0.0",
     "@testing-library/jest-dom": "^5.14.1",
@@ -16,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "sharp": "^0.33.4",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -25,7 +27,8 @@
     "test": "craco test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "encode-images": "node ./encode-images.js"
   },
   "eslintConfig": {
     "extends": [

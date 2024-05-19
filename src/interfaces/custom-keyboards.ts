@@ -1,3 +1,5 @@
+import { ImageDetail } from "./image"
+
 interface CustomKeyboardDetail {
   id: number
   title?: string
@@ -12,7 +14,7 @@ interface CustomKeyboardDetail {
   stabilizers?: Array<string>
   dampenings?: Array<string>
   mountings?: Array<string>
-  images?: Array<string>
+  images?: Array<ImageDetail>
   website?: string
   fulfilled: boolean
   loaded: boolean

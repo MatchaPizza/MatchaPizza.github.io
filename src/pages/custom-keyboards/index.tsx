@@ -1,16 +1,16 @@
 import { Fragment, useEffect, useState } from 'react'
-import customKeyboards from '@custom_keyboards/index.json'
+import customKeyboards from '@custom-keyboards/index.json'
 import CustomKeyboardDetail, {
   InitCustomKeyboardDetail,
-} from '@interfaces/custom_keyboards'
+} from '@interfaces/custom-keyboards'
 import Card from '@components/Card'
 import ImageSwiper from '@components/ImageSwiper'
-import ImageSlide from '@components/ImageSlide'
 import Chip from '@components/Chip'
 import Skeleton from '@components/Skeleton'
 import IconButton from '@components/IconButton'
 import KeyboardCard from './KeyboardCard'
 import './index.css'
+import LazyImage from '@components/LazyImage'
 
 const CustomKeyboardsPage = () => {
   const [customKeyboardDetailList, setCustomKeyboardDetailList] = useState<
@@ -38,7 +38,7 @@ const CustomKeyboardsPage = () => {
         )?.path
         if (keyboardPath === undefined) return
         const customKeyboardDetail: CustomKeyboardDetail = await import(
-          `@custom_keyboards/${keyboardPath}`
+          `@custom-keyboards/${keyboardPath}`
         )
         setCustomKeyboardDetailList((list) =>
           list.map((element) =>
@@ -84,8 +84,13 @@ const CustomKeyboardsPage = () => {
                       <ImageSwiper width="100%" height={500}>
                         {customKeyboardDetail.images.map(
                           (image, imageIndex) => (
-                            <ImageSlide
-                              src={`custom_keyboards/images/${image}`}
+                            <LazyImage
+                              src={`custom-keyboards/images/${image.path}`}
+                              hash={image.hash}
+                              originalWidth={image.originalWidth}
+                              originalHeight={image.originalHeight}
+                              width="100%"
+                              height="100%"
                               alt={`image-${customKeyboardDetail.id}-${imageIndex}`}
                               key={`image-${customKeyboardDetail.id}-${imageIndex}`}
                             />

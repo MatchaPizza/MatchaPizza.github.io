@@ -1,30 +1,25 @@
 .image-swiper {
   display: flex;
   position: relative;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
 .slide-container {
   display: flex;
   overflow-x: scroll;
-  position: relative;
   scroll-behavior: smooth;
-
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
+  scroll-snap-type: x mandatory;
 }
 
 .slide-container::-webkit-scrollbar {
   display: none;
+}
+
+.slide-container .lazy-image {
+  flex: 0 0 100%;
+  object-fit: cover;
+  scroll-snap-align: start;
 }
 
 .left-button-container {
@@ -72,10 +67,8 @@
   background-color: rgba(75, 75, 75, 95%);
 }
 
-.zoomed-image {
-  max-width: 95%;
-  max-height: 95%;
-  object-fit: cover;
+.zoomed-container img {
+  object-fit: contain;
 }
 
 .zoom-out-button-container {

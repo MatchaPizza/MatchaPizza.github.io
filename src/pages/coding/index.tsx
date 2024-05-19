@@ -58,9 +58,12 @@ const CodingPage = () => {
             {projectDetail.loaded ? (
               <Fragment>
                 <h2>{projectDetail.title}</h2>
-                {projectDetail.imagePath && (
+                {projectDetail.image && (
                   <LazyImage
-                    src={`/projects/images/${projectDetail.imagePath}`}
+                    src={`/projects/images/${projectDetail.image.path}`}
+                    hash={projectDetail.image.hash}
+                    originalWidth={projectDetail.image.originalWidth}
+                    originalHeight={projectDetail.image.originalHeight}
                     alt={`${projectDetail.title}`}
                     width="100%"
                     height={300}
@@ -122,6 +125,9 @@ const CodingPage = () => {
             height={200}
             width={200}
             src={JoakIconLink}
+            hash="UDC72MgN00IC0cbb}hxGEGoL,xR%}8RP5uoz"
+            originalWidth={460}
+            originalHeight={460}
             alt="joak-icon"
           />
           <p>Joak</p>
@@ -131,6 +137,9 @@ const CodingPage = () => {
             height={200}
             width={200}
             src={MatchaPizzaIconLink}
+            hash="UCAU%CuS8xEm7Bv;h~eb4TN4-rt0{Nk8C6o?"
+            originalWidth={460}
+            originalHeight={460}
             alt="matchapizza-icon"
           />
           <p>MatchaPizza</p>
