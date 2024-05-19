@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmatchapizza=self.webpackChunkmatchapizza||[]).push([[176],{176:function(a,c,p){a.exports=p.p+"static/media/2.b2faad8036c9d4b9d9cf.jpg"}}]);

@@ -1,0 +1,64 @@
+{
+  "id": 1,
+  "title": "Keychron K8",
+  "description": "This is my first \"custom keyboard\" as it came pre-built. Since the bottom case sounded pretty hollow, I filled it with some leftover foams from the box to dampen the sound a little bit. With the slient tactile switches and compatibility with mac, windows, linux systems, the board is pretty good for office use.",
+  "layout": "TKL WK",
+  "pcbs": [
+    "RGB Wireless Hotswap"
+  ],
+  "plates": [
+    "Aluminium"
+  ],
+  "caseColors": [
+    "Dull Green",
+    "Black"
+  ],
+  "caseMaterials": [
+    "Aluminium",
+    "Plastic"
+  ],
+  "keycaps": [
+    "[Clone] GMK Miami Nights"
+  ],
+  "switches": [
+    "Gazzew Boba U4",
+    "ZealPC Healios"
+  ],
+  "stabilizers": [
+    "Preinstalled Plate Mounted Stabilizer"
+  ],
+  "dampenings": [
+    "Mid-plate Foam"
+  ],
+  "mountings": [
+    "Tray Mounted"
+  ],
+  "images": [
+    {
+      "path": "k8/1.jpg",
+      "hash": "UIDItRF2MJIn0#wKtlxaFgt8V=aJ}mNZRQX8",
+      "originalWidth": 400,
+      "originalHeight": 300
+    },
+    {
+      "path": "k8/2.jpg",
+      "hash": "U9DSRL4nMeJW00JX_2MwTx[,InkE{aKQNze-",
+      "originalWidth": 400,
+      "originalHeight": 300
+    },
+    {
+      "path": "k8/3.jpg",
+      "hash": "UGBNWqD=%2RO8wxmX8tRu6D,MxM|9E%Mt7RP",
+      "originalWidth": 400,
+      "originalHeight": 300
+    },
+    {
+      "path": "k8/4.jpg",
+      "hash": "UBAd7hDN_3ROI8.9IA%MpfI9x]M{M{o~RiNH",
+      "originalWidth": 400,
+      "originalHeight": 300
+    }
+  ],
+  "website": "https://www.keychron.com/products/keychron-k8-tenkeyless-wireless-mechanical-keyboard",
+  "fulfilled": true
+}
